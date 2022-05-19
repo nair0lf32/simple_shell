@@ -31,7 +31,7 @@ return (line);
 /**
 *split_line - splits a line into tokens
 *@line: line to be split
-Return: A NULL terminated array of tokens
+*Return: A NULL terminated array of tokens
 */
 char **split_line(char *line)
 {
