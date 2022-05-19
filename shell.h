@@ -13,5 +13,7 @@
 
 void simple_shell(void);
 char* read_line();
+char** split_line(char *line);
+void execute(char **args);
 
 #endif /* SHELL_H */
