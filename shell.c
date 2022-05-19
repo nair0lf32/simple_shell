@@ -26,7 +26,14 @@ char *read_line(void)
 {
 char *line = NULL;
 size_t buflen = 0;
-getline(&line, &buflen, stdin);
+errno = 0;
+ssize_t strlen = getline(&line, &buflen, stdin);
+if (strlen < 0) {
+if (errno) {
+perror("error\n");
+}
+exit(1);
+}
 return (line);
 }
 /**
