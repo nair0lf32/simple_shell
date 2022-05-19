@@ -28,8 +28,10 @@ char *line = NULL;
 size_t buflen = 0;
 errno = 0;
 ssize_t strlen = getline(&line, &buflen, stdin);
-if (strlen < 0) {
-if (errno) {
+if (strlen < 0)
+{
+if (errno)
+{
 perror("error\n");
 }
 exit(1);
