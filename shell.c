@@ -25,9 +25,9 @@ free(line);
 char *read_line(void)
 {
 char *line = NULL;
-size_t buflen = 0;
+size_t buffer_size = 0;
 errno = 0;
-ssize_t strlen = getline(&line, &buflen, stdin);
+ssize_t strlen = getline(&line, &buffer_size, stdin);
 if (strlen < 0)
 {
 if (errno)
@@ -46,18 +46,18 @@ return (line);
 char **split_line(char *line)
 {
 int length = 0;
-int capacity = 16;
-char **tokens = malloc(capacity * sizeof(char *));
+int memsize = 10;
+char **tokens = malloc(memsize * sizeof(char *));
 char *delimiters = " \t\r\n";
 char *token = strtok(line, delimiters);
 while (token != NULL)
 {
 tokens[length] = token;
 length++;
-if (length >= capacity)
+if (length >= memsize)
 {
-capacity = (int) (capacity * 1.5);
-tokens = realloc(tokens, capacity *sizeof(char *));
+memsize = (int) (memsize * 2);
+tokens = realloc(tokens, memsize *sizeof(char *));
 }
 token = strtok(NULL, delimiters);
 }
@@ -75,7 +75,7 @@ pid_t child_pid = fork();
 if (child_pid == 0)
 {
 execvp(args[0], args);
-perror("shell");
+perror("error\n");
 exit(1);
 }
 else if (child_pid > 0)
@@ -87,6 +87,6 @@ waitpid(child_pid, &status, WUNTRACED);
 }
 else
 {
-perror("shell");
+perror("error\n");
 }
 }
