@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+int main(void);
 void simple_shell(void);
 char *read_line(void);
 char **split_line(char *line);
