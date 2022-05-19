@@ -7,6 +7,7 @@ void simple_shell(void)
 {
 while (true)
 {
+printf("$ ");
 char *line = read_line();
 char **tokens = split_line(line);
 if (tokens[0] != NULL)

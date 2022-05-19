@@ -6,5 +6,5 @@
 int main(void)
 {
 simple_shell();
-return (EXIT_SUCCESS);
+return (0);
 }
