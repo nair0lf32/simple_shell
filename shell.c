@@ -52,7 +52,7 @@ char *delimiters = " \t\r\n";
 char *token = strtok(line, delimiters);
 while (token != NULL)
 {
-//handle EOF
+/* handle EOF */
 if (token == EOF || token == '\n')
 {
 tokens[length] = '\0';
@@ -63,7 +63,7 @@ else
 tokens[length] = token;
 }
 length++;
-// handle memory allocation
+/* handle memory allocation */
 if (length >= memsize)
 {
 memsize = (int) (memsize * 2);
