@@ -46,14 +46,24 @@ return (line);
 char **split_line(char *line)
 {
 int length = 0;
-int memsize = 10;
+int memsize = 1024;
 char **tokens = malloc(memsize * sizeof(char *));
 char *delimiters = " \t\r\n";
 char *token = strtok(line, delimiters);
 while (token != NULL)
 {
+//handle EOF
+if (token == EOF || token == '\n')
+{
+tokens[length] = '\0';
+return (tokens);
+} 
+else 
+{
 tokens[length] = token;
+}
 length++;
+// handle memory allocation
 if (length >= memsize)
 {
 memsize = (int) (memsize * 2);
