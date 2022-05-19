@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
 *main - Entry point for test
-*Return: Always 0 (Success) 
+*Return: Always 0 (Success)
 */
 int main(void)
 {

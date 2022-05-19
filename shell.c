@@ -5,11 +5,11 @@
 */
 void simple_shell(void)
 {
-while (true) 
+while (true)
 {
 char *line = read_line();
 char **tokens = split_line(line);
-if (tokens[0] != NULL) 
+if (tokens[0] != NULL)
 {
 execute(tokens);
 }
@@ -44,7 +44,7 @@ while (token != NULL)
 {
 tokens[length] = token;
 length++;
-if (length >= capacity) 
+if (length >= capacity)
 {
 capacity = (int) (capacity * 1.5);
 tokens = realloc(tokens, capacity *sizeof(char *));
@@ -62,19 +62,19 @@ return (tokens);
 void execute(char **args)
 {
 pid_t child_pid = fork();
-if (child_pid == 0) 
+if (child_pid == 0)
 {
 execvp(args[0], args);
 perror("shell");
 exit(1);
-} 
-else if (child_pid > 0) 
+}
+else if (child_pid > 0)
 {
 int status;
 do {
 waitpid(child_pid, &status, WUNTRACED);
 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-} 
+}
 else
 {
 perror("shell");
