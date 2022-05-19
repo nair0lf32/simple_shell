@@ -57,8 +57,8 @@ if (token == EOF || token == '\n')
 {
 tokens[length] = '\0';
 return (tokens);
-} 
-else 
+}
+else
 {
 tokens[length] = token;
 }
